@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_app/Network/api.dart';
 import 'package:weather_app/constant.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/modal/weatherInfo.dart';
@@ -34,20 +33,20 @@ class _WeatherState extends State<Weather> {
     super.initState();
     var dd = DateFormat('EEE dd/MM/yyyy').format(now);
     day = dd;
-    //getData();
+    
   }
 
   String getDay(String dt) {
     DateTime dd = DateTime.parse(dt);
     var day = DateFormat('EEE').format(dd);
-    //print(day);
+    
     return day;
   }
 
   String getMonth(String dt) {
     DateTime dd = DateTime.parse(dt);
     var day = DateFormat('dd/MM').format(dd);
-   // print(day);
+   
     return day;
   }
 
@@ -55,7 +54,7 @@ class _WeatherState extends State<Weather> {
     http.Response res = await http.get(
         "http://api.openweathermap.org/data/2.5/forecast?id=292223&appid=ab67b4e1dbdf3ee132b805876bad003f&cnt=5&units=metric");
     var body = jsonDecode(res.body);
-   // print(body);
+   
 
     city = body['city']['name'];
     dt = body['list'][0]['dt'];
@@ -69,23 +68,7 @@ class _WeatherState extends State<Weather> {
     int t = (body['list'][0]['main']['temp']).toInt();
 
     temp = t.toString();
-    /*print(city +
-        ' ' +
-        weather +
-        ' ' +
-        temp +
-        ' ' +
-        mintemp +
-        ' ' +
-        maxtemp +
-        ' ' +
-        lat.toString() +
-        ' ' +
-        lon.toString());*/
-   /* now = DateTime.now();
-    DateTime dd = DateTime.parse("2021-09-06 15:00:00");
-    var day = DateFormat('EEE').format(dd);*/
-  //  print(day);
+    
     return body;
   }
 

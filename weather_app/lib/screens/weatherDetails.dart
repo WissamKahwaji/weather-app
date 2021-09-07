@@ -23,7 +23,7 @@ class _WeatherDetState extends State<WeatherDet> {
     http.Response res = await http.get(
         "http://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${widget.weatherInfo.lat}&lon=${widget.weatherInfo.lon}&dt=${tt()}&appid=ab67b4e1dbdf3ee132b805876bad003f&units=metric");
     var body = jsonDecode(res.body);
-    // print(body);
+    
     return body;
   }
 
@@ -37,10 +37,10 @@ class _WeatherDetState extends State<WeatherDet> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // print(widget.weatherInfo.dt.toString());
+    
     getData();
     dt = tt();
-    //print(dt);
+    
   }
 
   @override
